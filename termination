@@ -1,4 +1,4 @@
-def agent_loop(max_iters=10):
+def agent_loop(success_condition, max_iters=10):
     state = {
         "done": False,
         "stage": "start"

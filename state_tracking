@@ -1,33 +1,22 @@
-state = {
-    "done": False,
-    "stage": 0,
-    "status": None
-}
+def track_state(max_iters=10, success_at=3):
+    state = {
+        "done": False,
+        "stage": 0,
+        "status": None
+    }
 
-max_iters = 10
+    for _ in range(max_iters):
+        state["stage"] += 1
+        print(f"Iteration {state['stage']}")
+        print("Observe")
+        print("Decide")
+        print("Act")
 
-for i in range(max_iters):
-    state["stage"] += 1
+        if state["stage"] == success_at:
+            state["done"] = True
+            state["status"] = "success"
+            return state
 
-    print(f"Iteration {state['stage']}")
-
-    # Observe
-    print("Observe")
-
-    # Decide
-    print("Decide")
-
-    # Act
-    print("Act")
-
-    # Example success condition
-    if state["stage"] == 3:
-        state["done"] = True
-        state["status"] = "success"
-        return state
-
-# If max iterations are exceeded
-state["done"] = True
-state["status"] = "failure"
-
-return state
+    state["done"] = True
+    state["status"] = "failure"
+    return state
